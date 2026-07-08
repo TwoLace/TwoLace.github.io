@@ -1,50 +1,313 @@
 /* ===== GENERAL STYLES ===== */
-body {
-    background-color: lightblue;
+:root {
+    --bg: #07111f;
+    --panel: #101d33;
+    --panel-2: #16243f;
+    --text: #f4f7fb;
+    --muted: #9bb1c9;
+    --accent: #7c4dff;
+    --accent-2: #26d0ce;
+    --border: rgba(255, 255, 255, 0.08);
 }
 
-/* ===== HEADINGS ===== */
-h1 {
-    color: black;
-    text-align: center;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "JetBrains Mono", monospace;
+    background: radial-gradient(circle at top left, #15263f 0%, var(--bg) 55%, #040811 100%);
+    color: var(--text);
+    min-height: 100vh;
+    min-width: 100%;
+    background-attachment: fixed;
+}
+
+.page-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
 }
 
 /* ===== NAVIGATION BAR ===== */
 .topnav {
-    background-color: black;
-    border-radius: 8px;
+    background: rgba(7, 16, 28, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
 }
 
 .topnav h1 {
-    color: #4c04aa;
+    color: var(--accent-2);
     font-family: "Syne Mono", monospace;
     letter-spacing: -0.04em;
     text-transform: lowercase;
-    font-size: 20px;
-    padding: 16px;
+    font-size: 1.15rem;
+    margin: 0;
+    padding: 16px 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
 }
 
 .topnav a {
     color: #f2f2f2;
-    font-family: "JetBrains Mono", monospace;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 12px;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.08em;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .topnav a:hover {
-    background-color: #8f48c6;
+    background-color: rgba(124, 77, 255, 0.22);
     color: white;
 }
 
+a {
+    color: #7dd3fc;
+    text-decoration: none;
+}
+
+a:hover,
+a:visited:hover {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #8be9fd;
+}
+
 .topnav a.active {
-    background-color: #4c04aa;
+    background: linear-gradient(135deg, var(--accent), #9a63ff);
     color: white;
+}
+
+/* ===== HERO ===== */
+.hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.9fr;
+    gap: 24px;
+    align-items: center;
+    margin-top: 28px;
+    padding: 28px;
+    background: rgba(16, 29, 51, 0.9);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--accent-2);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.hero h2,
+.page-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.1;
+    margin: 0 0 12px;
+}
+
+.hero-copy p,
+.page-intro,
+.card p,
+.content-card p,
+.content-card li {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button.primary {
+    background: linear-gradient(135deg, var(--accent), #9a63ff);
+    color: white;
+    box-shadow: 0 8px 20px rgba(124, 77, 255, 0.3);
+}
+
+.button.secondary {
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.highlights li {
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(38, 208, 206, 0.12);
+    border: 1px solid rgba(38, 208, 206, 0.2);
+    color: #c7f6f4;
+    font-size: 0.8rem;
+}
+
+/* ===== TERMINAL CARD ===== */
+.terminal-card {
+    background: #060b13;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.terminal-top {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #0f1728;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-card pre {
+    margin: 0;
+    padding: 18px;
+    color: #8be9fd;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    overflow-x: auto;
+}
+
+/* ===== INFO GRID ===== */
+.info-grid,
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card,
+.content-card {
+    background: rgba(16, 29, 51, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.card h3,
+.content-card h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.placeholder {
+    border: 1px dashed rgba(38, 208, 206, 0.3);
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(38, 208, 206, 0.06);
+    color: #cdeff0;
+}
+
+.placeholder-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill {
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(124, 77, 255, 0.16);
+    border: 1px solid rgba(124, 77, 255, 0.24);
+    color: #e4dcff;
+    font-size: 0.85rem;
+}
+
+.contact-list {
+    padding-left: 18px;
+    margin: 12px 0 0;
+}
+
+.page-header {
+    margin-top: 28px;
+    padding: 24px 6px 8px;
+}
+
+.page-header h2 {
+    margin-bottom: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid,
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .topnav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 14px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
 }
